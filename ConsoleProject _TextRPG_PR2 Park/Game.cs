@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         public static Player player = new Player();
 
         private static bool gameOver;
+        private static bool hasEnded = false;
         public static void Run()
         {
             while (gameOver == false)
@@ -59,9 +61,16 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
         public static void End()
         {
-            gameOver = true;
+            if (hasEnded) return;
+            hasEnded = true;
             Console.Clear();
-            Console.WriteLine("끝");
+            gameOver = true;
+            
+                if (Game.player.inventory.Any(item => item.name == "용기"))
+                {
+                    Endings.EndingA();
+                }
+            
         }
         public static void GameOver()
         {
