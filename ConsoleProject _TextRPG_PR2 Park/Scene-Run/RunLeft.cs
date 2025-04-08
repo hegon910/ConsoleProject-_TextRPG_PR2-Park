@@ -23,15 +23,13 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Console.ResetColor();
                 }
                 Console.WriteLine();
-                
 
             }
-            
-                
-   
-                
+            Console.WriteLine("       왼쪽으로 도망쳤다...쫓기고 있다... 무섭다.\n" +
+                        "       I, - : Door\n" +
+                        "       Press 'I' on keyboard to check your Emotion");
 
-            
+
             int height = mapdata.GetLength(0);
             int width = mapdata.GetLength(1);
             map = new bool[height, width];
@@ -163,21 +161,22 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     leftRoomItem.RemoveAt(i);        // 리스트에서 제거
                     i--; // 제거했으니까 인덱스도 하나 줄여줘야 안전
 
-                    Console.SetCursorPosition(0, mapdata.GetLength(0) + 2);
-                    if (Game.player.inventory.Any(item => item.name == "용기"))
+                    int msgY= mapdata.GetLength(0);
+                    Console.SetCursorPosition(0, msgY);
+                    for (int j= 0; j< 3; j++)
                     {
+                        Console.SetCursorPosition(0, msgY + j);
+                        Console.Write(new string(' ', Console.WindowWidth));
+                    }
+                    
+                    Console.SetCursorPosition(0, msgY-2);
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"\n\n\n'{item.name}'을(를) 얻었다. 이제는 그것을 마주할 것이다." +
-                          "       I, - : Door\n" +
-                          "       Press 'I' on keyboard to check your Emotion");
-                        Console.ResetColor();
-                    }
-                    else
-                    {
-                        Console.WriteLine("       왼쪽으로 도망쳤다...쫓기고 있다... 무섭다.\n" +
-                          "       I, - : Door\n" +
-                          "       Press 'I' on keyboard to check your Emotion");
-                    }
+                    Console.WriteLine($"\n\n\n       '{item.name}'를 얻었다. 이제는 그것을 마주할 것이다. \n" +
+                        "       나를 쫓아오지 않았다. 나 혼자 두려워했던 것 뿐일까?\n" +
+                        "       Press 'I' on keyboard to check your Emotion");
+                    Console.ResetColor();
+                    
+                  
                 }
             }
         }

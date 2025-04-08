@@ -20,23 +20,23 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     if (Game.player.inventory.Any(item => item.name == "용기"))
                     {
                         Game.End();
-                        
+                        return;
                     }
                     else
                     {
                         Game.ChangeScene("RunLeft");
+                        return;
                     }
                     
-                    break;
                 case ConsoleKey.RightArrow:
                     Game.ChangeScene("RunRight");
-                    break;
+                    return;
                 case ConsoleKey.DownArrow:
                     Game.ChangeScene("RunDown");
-                    break;
+                    return;
                 case ConsoleKey.UpArrow:
                     Game.GameOver();
-                    break;
+                    return;
                 default:
                     Console.WriteLine("누군가가 나를 비웃는다.");
                     Console.Beep(300, 100);
@@ -69,10 +69,12 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 if (Game.player.inventory.Any(item => item.name == "용기"))
                 {
                     Game.End();
+                    
                 }
                 else
                 {
                     Game.ChangeScene("RunLeft");
+                    return;
                 }
             }    
                 Input();
@@ -245,7 +247,10 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.Beep(180, 600);
             if (Game.prevSceneName == "RunLeft")
             {
-                Console.WriteLine("                                         1.용기 ←     3.도망  →       4.도망  ↓ ");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("                                         1.용기 ");
+                Console.ResetColor();
+                Console.WriteLine("       3.도망  →       4.도망  ↓ ");
             }
             else
             {
