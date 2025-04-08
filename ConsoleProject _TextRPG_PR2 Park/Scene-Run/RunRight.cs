@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject__TextRPG_PR2_Park
 {
-    class RunDown : BaseScene
+    class RunRight : BaseScene
     {
         public override void Input()
         {
@@ -24,6 +24,10 @@ namespace ConsoleProject__TextRPG_PR2_Park
         }
 
         public override void Update()
+        {
+            throw new NotImplementedException();
+        }
+        public override void Enter()
         {
             throw new NotImplementedException();
         }

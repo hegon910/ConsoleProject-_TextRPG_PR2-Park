@@ -71,6 +71,10 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
         public override void Result()
         { }
+        public override void Enter()
+        {
+            throw new NotImplementedException();
+        }
 
         private void PlayOpening()
         {
@@ -249,5 +253,6 @@ namespace ConsoleProject__TextRPG_PR2_Park
             }
             #endregion
         }
+
     }
 }

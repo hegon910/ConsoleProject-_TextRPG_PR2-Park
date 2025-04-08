@@ -10,7 +10,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
     {
         private static Dictionary<string, BaseScene> sceneDic;
         private static BaseScene curScene;
-
+        public static Player player = new Player();
 
         private static bool gameOver;
         public static void Run()

@@ -26,19 +26,17 @@ namespace ConsoleProject__TextRPG_PR2_Park
         }
         public override void Input()
         {
+            if(Console.KeyAvailable)
+            {
+                ConsoleKey key = Console.ReadKey(true).Key;
+                Game.player.Move(key);
+            }
             
         }
+        #region 방구조
 
-        public override void Render()
+        char[,] mapdata = new char[,] //가로로 넓게 하기가 힘들다.
         {
-
-            Console.Clear(); //플리커링, 입력 대기받으면 개선될것으로 추정.
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine("왼쪽방");
-            #region 방구조
-           
-            char[,] mapdata = new char[,] //가로로 넓게 하기가 힘들다.
-            {
                 {'#','#',' ','#','#','#','#','[','-',']','#','#','#','#','#','#','#','#','#','#','#','#' },
                 {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ',' ',' ',' ','#' },
                 {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ',' ',' ',' ','#' },
@@ -51,11 +49,19 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ',' ',' ',' ','#' },
                 {'#',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','#',' ',' ',' ',' ',' ',' ',' ',' ',' ','#' },
                 {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#' }
-            };
-            
-            #endregion
-            InitMap(mapdata);
-            for(int y = 0; y<mapdata.GetLength(0); y++) // 맵그리기
+        };
+
+        #endregion
+
+        public override void Render()
+        {
+
+            Console.Clear(); //플리커링, 입력 대기받으면 개선될것으로 추정.
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("왼쪽방");
+         
+            InitMap(mapdata);// 맵그리기
+            for (int y = 0; y<mapdata.GetLength(0); y++) 
             {
                 for(int x = 0; x<mapdata.GetLength(1); x++)
                 {
@@ -66,10 +72,17 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 Console.WriteLine();
 
             }
+            Game.player.Print();
+            
           
         }
 
-
+        public override void Enter()
+        {
+            InitMap(mapdata);
+            Game.player.map = map;
+            Game.player.position = new Vector2(1, 1);
+        }
         public override void Result()
         {
             

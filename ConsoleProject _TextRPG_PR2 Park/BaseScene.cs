@@ -20,6 +20,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
         public abstract void Result();
 
+        public abstract void Enter();
 
 
     }
