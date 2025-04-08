@@ -44,6 +44,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
             if (sceneDic.ContainsKey(sceneName))
             {
                 curScene = sceneDic[sceneName];
+                curScene.Enter();
             }
         }
 
