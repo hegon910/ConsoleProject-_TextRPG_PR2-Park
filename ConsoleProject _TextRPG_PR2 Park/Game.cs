@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
     {
         private static Dictionary<string, BaseScene> sceneDic;
         private static BaseScene curScene;
+        public static string prevSceneName;
         public static Player player = new Player();
 
         private static bool gameOver;
@@ -40,17 +42,27 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
         public static void ChangeScene(string sceneName)
         {
+            
+
             Console.WriteLine("현재씬 :" + curScene);
+
+
+            prevSceneName = curScene.GetType().Name;
             if (sceneDic.ContainsKey(sceneName))
             {
                 curScene = sceneDic[sceneName];
                 curScene.Enter();
             }
+
         }
 
 
         public static void End()
-        { }
+        {
+            gameOver = true;
+            Console.Clear();
+            Console.WriteLine("끝");
+        }
         public static void GameOver()
         {
             #region 엔딩 시퀀스

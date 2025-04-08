@@ -1,27 +1,31 @@
-﻿namespace ConsoleProject__TextRPG_PR2_Park
+﻿using System.Data;
+
+namespace ConsoleProject__TextRPG_PR2_Park
 {
     public class Player
     {
         public Vector2 position;
         public bool[,] map;
-        private Vector2 prevPosition = new Vector2(-1, -1); // 클래스 안에 추가
-
+        private Vector2 prevPosition = new Vector2(-1, -1); 
+        public List<Item> inventory = new List<Item>(); // 인벤토리
+        public bool inventoryVisible = false;
+        public bool InventoryChanged { get; set; } = false;
         public void Print()
         {
-            // 이전 위치 지우기
+            
             if (prevPosition.x >= 0 && prevPosition.y >= 0)
             {
                 Console.SetCursorPosition(prevPosition.x, prevPosition.y);
                 Console.Write(" ");
             }
 
-            // 현재 위치에 이모지 출력
+            
             Console.SetCursorPosition(position.x, position.y);
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write("♥"); // 
+            Console.Write("♥"); 
             Console.ResetColor();
 
-            // 위치 기록
+            
             prevPosition = new Vector2(position.x, position.y);
         }
         public void Move(ConsoleKey input)
@@ -51,6 +55,61 @@
 
         }
 
+        public void PrintInventoryWindow()
+        {
+            int x = 35;
+            int y = 2;
+            int maxLines = 10;
+
+            for (int i = 0; i < maxLines; i++) //창 지우기
+            {
+                Console.SetCursorPosition(x, y + i);
+                Console.Write(new string(' ', 22));
+            }
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.SetCursorPosition(x, y++);
+            Console.WriteLine("┌────  마음 속 ────┐");
+
+            if(inventory .Count == 0)
+            {
+                Console.SetCursorPosition(x, y++);
+                Console.WriteLine("나의 마음은 비어있다.");
+            }
+            else
+            {
+                Console.SetCursorPosition(x, y++);
+                Console.Write("|나의 마음에는..   |");
+                foreach (Item item in inventory)
+                {
+                    Console.SetCursorPosition(x, y++);
+                    Console.WriteLine($"|....{item.name,-12}|");
+                    Console.SetCursorPosition(x, y++);
+                    Console.WriteLine("|     가 느껴진다. |");
+                }
+            }
+                Console.SetCursorPosition(x, y++);
+                Console.WriteLine("└──────────────────┘");
+            Console.ResetColor();
+        }
+        public void Additem(Item item)
+        {
+            inventory.Add(item);
+            InventoryChanged = true;
+        }
+
+        public void ClearInventoryWindow()
+        {
+            int x = 35;
+            int y = 2;
+            int maxLines = 10;
+
+            for (int i = 0; i < maxLines; i++)
+            {
+                Console.SetCursorPosition(x, y + i);
+                Console.Write(new string(' ', 22));
+            }
+        }
 
     }
 }

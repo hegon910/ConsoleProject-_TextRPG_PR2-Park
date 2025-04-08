@@ -17,7 +17,16 @@ namespace ConsoleProject__TextRPG_PR2_Park
             switch (input)
             {
                 case ConsoleKey.LeftArrow:
-                    Game.ChangeScene("RunLeft");
+                    if (Game.player.inventory.Any(item => item.name == "용기"))
+                    {
+                        Game.End();
+                        
+                    }
+                    else
+                    {
+                        Game.ChangeScene("RunLeft");
+                    }
+                    
                     break;
                 case ConsoleKey.RightArrow:
                     Game.ChangeScene("RunRight");
@@ -45,17 +54,28 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("────────────────────────────────────────────");
             Console.WriteLine("      아무 키나 눌러 게임을 시작합니다...");
-            Console.WriteLine("      (Enter 키를 누르면 오프닝 연출을 건너뜁니다)");
+            Console.WriteLine("      (numpad:1 키를 누르면 오프닝 연출을 건너뜁니다)");
             Console.WriteLine("────────────────────────────────────────────");
             Console.ResetColor();
 
             ConsoleKey key = Console.ReadKey(true).Key;
-            if (key == ConsoleKey.Enter)
+            if (key == ConsoleKey.NumPad1)
             {
                 Console.WriteLine("[DEBUG] 오프닝 스킵됨, 디버그할 방향키를 누르세요.");
                 return;
             }
-            Input();
+            else if (key == ConsoleKey.LeftArrow)
+            {
+                if (Game.player.inventory.Any(item => item.name == "용기"))
+                {
+                    Game.End();
+                }
+                else
+                {
+                    Game.ChangeScene("RunLeft");
+                }
+            }    
+                Input();
             PlayOpening();
 
 
@@ -73,7 +93,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         { }
         public override void Enter()
         {
-            throw new NotImplementedException();
+            PlayOpening();
         }
 
         private void PlayOpening()
@@ -223,7 +243,14 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.Beep(270, 500);
             Console.Beep(200, 300);
             Console.Beep(180, 600);
-            Console.WriteLine("                                         1.도망  ←     3.도망  →       4.도망  ↓ ");
+            if (Game.prevSceneName == "RunLeft")
+            {
+                Console.WriteLine("                                         1.용기 ←     3.도망  →       4.도망  ↓ ");
+            }
+            else
+            {
+                Console.WriteLine("                                         1.도망  ←     3.도망  →       4.도망  ↓ ");
+            }
 
             Thread.Sleep(1000);
 
