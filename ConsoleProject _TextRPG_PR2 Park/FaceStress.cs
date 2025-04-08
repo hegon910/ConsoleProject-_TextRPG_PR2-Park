@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleProject__TextRPG_PR2_Park
 {
+    //TODO : 브금과 입력처리 병렬화
     public class FaceStress : BaseScene
     {
         public override void Input()
@@ -23,12 +25,54 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 case ConsoleKey.DownArrow:
                     Game.ChangeScene("RunDown");
                     break;
+                case ConsoleKey.UpArrow:
+                    Game.GameOver();
+                    break;
+                default:
+                    Console.WriteLine("누군가가 나를 비웃는다.");
+                    Console.Beep(300, 100);
+                    Console.Beep(300, 100);
+                    Console.Beep(300, 100);
+                    break;
 
             }
 
         }
 
         public override void Render()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("────────────────────────────────────────────");
+            Console.WriteLine("      아무 키나 눌러 게임을 시작합니다...");
+            Console.WriteLine("      (Enter 키를 누르면 오프닝 연출을 건너뜁니다)");
+            Console.WriteLine("────────────────────────────────────────────");
+            Console.ResetColor();
+
+            ConsoleKey key = Console.ReadKey(true).Key;
+            if (key == ConsoleKey.Enter)
+            {
+                Console.WriteLine("[DEBUG] 오프닝 스킵됨, 디버그할 방향키를 누르세요.");
+                return;
+            }
+            Input();
+            PlayOpening();
+
+
+            
+        
+            
+            
+        }
+
+        public override void Update()
+        { }
+
+
+        public override void Result()
+        { }
+
+        private void PlayOpening()
         {
             #region 오프닝 시퀀스
             Console.Clear();
@@ -180,9 +224,11 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Thread.Sleep(1000);
 
             int count = 0;
-            while (true)
+            bool isRunning = true;
+            while (isRunning)
             {
-                if (count % 3 == 0)
+                if (count % 3 == 0) // TODO : 브금이 3번 루프하고나서야 키입력이 가능해짐 일단 보류
+
                     Console.Beep(270, 500);
                 Console.Beep(200, 300);  // 가끔 변칙음
 
@@ -190,29 +236,18 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 Thread.Sleep(1000);
 
                 count++;
-                Input();
+
+
                 if (Console.KeyAvailable)
                 {
-                    ConsoleKey key = Console.ReadKey(true).Key;
-
-                    if (key == ConsoleKey.UpArrow)
-                    {
-                        Game.GameOver();
-                        return;
-                    }
+                    Input();
+                    isRunning = false;
                 }
+
+
 
             }
             #endregion
         }
-
-        public override void Update()
-        { }
-
-
-        public override void Result()
-        { }
-
-
     }
 }

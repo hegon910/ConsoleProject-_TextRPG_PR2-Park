@@ -40,6 +40,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
         public static void ChangeScene(string sceneName)
         {
+            Console.WriteLine("현재씬 :" + curScene);
             if (sceneDic.ContainsKey(sceneName))
             {
                 curScene = sceneDic[sceneName];
