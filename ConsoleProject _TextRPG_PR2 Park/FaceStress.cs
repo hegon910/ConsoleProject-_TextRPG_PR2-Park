@@ -10,6 +10,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
     //TODO : 브금과 입력처리 병렬화
     public class FaceStress : BaseScene
     {
+
+        private bool hasPlayedOp = false;
         public override void Input()
         {
             #region 키입력과 인벤토리(심리상태)에 따른 분기 세분화
@@ -52,10 +54,13 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Endings.GameOver();
                     return;
                 default:
+                    Console.SetCursorPosition(0, 19);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
                     Console.WriteLine("누군가가 나를 비웃는다.");
-                    Console.Beep(300, 100);
-                    Console.Beep(300, 100);
-                    Console.Beep(300, 100);
+                    Console.Beep(550, 100);
+                    Console.Beep(550, 100);
+                    Console.Beep(600, 50);
+                    Console.ResetColor();
                     break;
             }
             #endregion
@@ -92,23 +97,28 @@ namespace ConsoleProject__TextRPG_PR2_Park
         public override void Render()
         {
             #region 오프닝 스킵용 디버그 화면
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("────────────────────────────────────────────");
-            Console.WriteLine("      아무 키나 눌러 게임을 시작합니다...");
-            Console.WriteLine("      (numpad:1 키를 누르면 오프닝 연출을 건너뜁니다)");
-            Console.WriteLine("────────────────────────────────────────────");
-            Console.ResetColor();
-            ConsoleKey key = Console.ReadKey(true).Key;
-            if (key == ConsoleKey.NumPad1)
+            if (!hasPlayedOp)
             {
-                Debug();
+                Console.Clear();
+                Console.WriteLine("Press Any Key to Start.........");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine("────────────────────────────────────────────");
+                Console.WriteLine("      아무 키나 눌러 게임을 시작합니다...");
+                Console.WriteLine("      (numpad:1 키를 누르면 오프닝 연출을 건너뜁니다)");
+                Console.WriteLine("────────────────────────────────────────────");
+                Console.ResetColor();
+                ConsoleKey key = Console.ReadKey(true).Key;
+                if (key == ConsoleKey.NumPad1)
+                {
+                    Debug();
+                }
+                else
+                {
+                    PlayOpening();
+                }
+                hasPlayedOp = true;
             }
-            else
-            {
-                PlayOpening();
-            }
-            #endregion 
+                #endregion
         }
 
         public override void Update()
@@ -120,9 +130,10 @@ namespace ConsoleProject__TextRPG_PR2_Park
         public override void Enter()
         {
 
-              
 
             PlayOpening();
+            
+
         }
 
         private void PlayOpening()
@@ -275,28 +286,28 @@ namespace ConsoleProject__TextRPG_PR2_Park
             if (Game.player.inventory.Any(item => item.name == "용기") && Game.player.inventory.Any(item => item.name == "끈기"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("용기←        끈기→ ");
+                Console.WriteLine("용기←  끈기→ ");
                 Console.ResetColor();
-                Console.WriteLine("                        도망↓");
+                Console.WriteLine("             도망↓");
             }
             else if (Game.player.inventory.Any(item => item.name == "끈기"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("            끈기→ ");
+                Console.WriteLine("      끈기→ ");
                 Console.ResetColor();
-                Console.WriteLine("도망←                    도망↓ ");
+                Console.WriteLine("도망←         도망↓ ");
             }
             else if (Game.player.inventory.Any(item => item.name == "용기"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("용기← ");
                 Console.ResetColor();
-                Console.WriteLine("            도망→        도망↓ ");
+                Console.WriteLine("      도망→   도망↓ ");
 
             }
             else
             {
-                Console.WriteLine("도망←        도망→        도망↓ ");
+                Console.WriteLine("도망←  도망→  도망↓ ");
             }
 
             Thread.Sleep(1000);

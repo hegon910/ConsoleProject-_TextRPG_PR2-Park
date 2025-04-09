@@ -337,8 +337,10 @@ namespace ConsoleProject__TextRPG_PR2_Park
                             else
                             {
                                 visitedOrder.Clear();
-                                Console.SetCursorPosition(0, mapdata.GetLength(0) - 2);
+                                Console.SetCursorPosition(0, mapdata.GetLength(0) + 5);
+                                Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("처음부터 다시 해야할 것 같다..");
+                                Console.ResetColor();
                             }
                         }
                     }
