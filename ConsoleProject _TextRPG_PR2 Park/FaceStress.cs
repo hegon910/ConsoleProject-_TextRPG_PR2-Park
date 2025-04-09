@@ -42,7 +42,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Console.Beep(300, 100);
                     Console.Beep(300, 100);
                     Console.Beep(300, 100);
-                    break;
+                    return;
             }
             
 
@@ -67,6 +67,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 case ConsoleKey.UpArrow:
                     Game.GameOver();
                     return;
+                default:
+                    break;
             }
 
         }
@@ -83,6 +85,10 @@ namespace ConsoleProject__TextRPG_PR2_Park
             if (key == ConsoleKey.NumPad1)
             {
                 Debug();
+            }
+            else
+            {
+                PlayOpening();
             }
 
             }
@@ -268,7 +274,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
             {
                 if (count % 3 == 0) // TODO : 브금이 3번 루프하고나서야 키입력이 가능해짐 일단 보류
 
-                    Console.Beep(270, 500);
+                Console.Beep(270, 500);
                 Console.Beep(200, 300);  // 가끔 변칙음
 
                 Console.Beep(180, 600);
