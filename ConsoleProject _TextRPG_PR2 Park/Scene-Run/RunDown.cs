@@ -13,11 +13,39 @@ namespace ConsoleProject__TextRPG_PR2_Park
         List<char> visitedOrder = new List<char>();
         char[] correctOrder = { '①','②' , '③', '④', '⑤' };
         bool itemShow = false;
+        #region 방구조
 
+        char[,] mapdata = new char[,] //가로로 넓게 하기가 힘들다.
+        //TODO: 디버깅용으로 빠른 탈출 공간 만듬. 나중에 지울것.
+        {
+                {'#','━','━','#','#','─','─','#','#','─','─','#','#','─','─','#','#','─','─','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','①','#',' ',' ','④','#',' ',' ','②','#',' ',' ','③','#',' ',' ','⑤'},
+                {'#','2','4','#','#','3','5','#','#','1','4','#','#','5','1','#','#','2','3','#'}
+        };
+
+        #endregion
 
         private bool[,] map;
         private void InitMap(char[,] mapdata)
         {
+            #region 맵 준비 
             for (int y = 0; y < mapdata.GetLength(0); y++)
             {
                 for (int x = 0; x < mapdata.GetLength(1); x++)
@@ -59,38 +87,12 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
                 }
             }
-
+            #endregion
         }
-        #region 방구조
 
-        char[,] mapdata = new char[,] //가로로 넓게 하기가 힘들다.
-        //TODO: 디버깅용으로 빠른 탈출 공간 만듬. 나중에 지울것.
-        {
-                {'#','━','━','#','#','─','─','#','#','─','─','#','#','─','─','#','#','─','─','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','①','#',' ',' ','④','#',' ',' ','②','#',' ',' ','③','#',' ',' ','⑤'},
-                {'#','2','4','#','#','3','5','#','#','1','4','#','#','5','1','#','#','2','3','#'}
-        };
-
-        #endregion
         public override void Input()
         {
+            #region 키 입력 및 상호작용
             if (Console.KeyAvailable)
             {
                 ConsoleKey key = Console.ReadKey(true).Key;
@@ -110,17 +112,16 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Game.player.Move(key);
                 }
             }
+            #endregion
         }
 
         public override void Render()
         {
+
             Console.SetCursorPosition(0, 0);
-
-
-
             Game.player.Print();
 
-
+            #region 인벤토리
             foreach (Item item in downRoomItem)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -141,16 +142,14 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 Game.player.InventoryChanged = false;
             }
             Game.player.mentalSystem.PrintMentalGauge();
-
+            #endregion
         }
 
-        public override void Result()
-        {
 
-        }
 
         public override void Update()
         {
+            #region 아이템 습득 후 조건 달성
             for (int i = 0; i < downRoomItem.Count; i++)
             {
                 Item item = downRoomItem[i];
@@ -179,7 +178,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                         "       Press 'I' on keyboard to \nFeel Your Heart!");
                     Console.ResetColor();
                 }
-
+                #endregion
 
             }
             Game.player.mentalSystem.Update();
@@ -187,16 +186,18 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
         public override void Enter()
         {
+            #region 아이템 획득
             Console.Clear();
             InitMap(mapdata);
             Game.player.map = map;
             Game.player.position = new Vector2(1, 2);
             Game.player.mentalSystem.Reset();
             Game.player.mentalSystem.Unlock();
+            #endregion
         }
         private void TryInteract(ConsoleKey key)
         {
-            
+            #region 인터렉션
             Vector2 dir = key switch
             {
                 ConsoleKey.UpArrow => new Vector2(0, -1),
@@ -242,6 +243,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Console.ResetColor();
                 }
             }
+            #endregion
             else
             {
                 
@@ -255,7 +257,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         }
         public void DoorInteract()
         {
-
+            #region 문 번호 간 이동
             Vector2 prevPos = new Vector2(Game.player.position.x, Game.player.position.y);
             //플레이어가
             char tile = mapdata[prevPos.y, prevPos.x];
@@ -288,11 +290,11 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Game.player.position = new Vector2(17, 1);
                     break;
             }
-
+            #endregion
         }
         public void CheckRoomNum(Vector2 playerPos)
         {
-            
+            #region 번호 누르기 퍼즐(?)
             if (playerPos.y<mapdata.GetLength(0) && playerPos.x < mapdata.GetLength(1))
             {
                 char tile = mapdata[playerPos.y, playerPos.x];
@@ -346,6 +348,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     }
                 }
             }
+
+            #endregion
         }
 
 
