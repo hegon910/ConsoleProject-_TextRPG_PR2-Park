@@ -49,7 +49,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Game.ChangeScene("RunDown");
                     return;
                 case ConsoleKey.UpArrow:
-                    Game.GameOver();
+                    Endings.GameOver();
                     return;
                 default:
                     Console.WriteLine("누군가가 나를 비웃는다.");
@@ -81,7 +81,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Game.ChangeScene("RunDown");
                     return;
                 case ConsoleKey.UpArrow:
-                    Game.GameOver();
+                    Endings.GameOver();
                     return;
                 default:
                     break;
