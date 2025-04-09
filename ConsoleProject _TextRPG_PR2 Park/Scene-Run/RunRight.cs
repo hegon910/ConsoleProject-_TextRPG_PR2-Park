@@ -139,6 +139,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Game.player.mentalSystem.Reset();
             rightRoomItem.Clear();
             rightRoomItem.Add(new Item("끈기", 'A', new Vector2(30, 1)));
+            Game.player.mentalSystem.Unlock();
         }
 
         public override void Update()

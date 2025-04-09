@@ -82,6 +82,10 @@ namespace ConsoleProject__TextRPG_PR2_Park
             isLocked = true;
             mental = maxMental;
         }
+        public void Unlock()
+        {
+            isLocked = false;
+        }
         public void Reset()
         {
             mental = maxMental;

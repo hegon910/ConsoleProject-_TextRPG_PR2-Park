@@ -88,6 +88,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
             leftRoomItem.Clear();
             leftRoomItem.Add(new Item("용기", 'B', new Vector2(3, 10)));
+            Game.player.mentalSystem.Unlock();
         }
         #region 방구조
 
