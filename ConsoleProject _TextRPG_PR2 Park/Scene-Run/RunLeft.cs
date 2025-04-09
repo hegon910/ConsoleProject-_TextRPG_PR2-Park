@@ -139,7 +139,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                         }
                     Game.player.InventoryChanged = false;
             }
-            
+            Game.player.mentalSystem.PrintMentalGauge();
 
 
         }
@@ -158,6 +158,9 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 if (item.position.x == Game.player.position.x &&
                     item.position.y == Game.player.position.y)
                 {
+                    Console.Beep(400, 50);
+                    Console.Beep(400, 50);
+                    Game.player.mentalSystem.RecoverFull();
                     Game.player.inventory.Add(item); // 인벤토리에 추가
                     leftRoomItem.RemoveAt(i);        // 리스트에서 제거
                     i--; // 제거했으니까 인덱스도 하나 줄여줘야 안전
@@ -180,6 +183,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                   
                 }
             }
+            Game.player.mentalSystem.Update();
         }
         private void TryInteract(ConsoleKey key)
         {

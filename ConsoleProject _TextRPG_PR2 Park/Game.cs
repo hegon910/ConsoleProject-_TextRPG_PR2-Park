@@ -14,6 +14,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         private static BaseScene curScene;
         public static string prevSceneName;
         public static Player player = new Player();
+        
 
         private static bool gameOver;
         private static bool hasEnded = false;
@@ -31,7 +32,9 @@ namespace ConsoleProject__TextRPG_PR2_Park
         public static void Start()
         {
             gameOver = false;
+            hasEnded = false;
             Console.CursorVisible = false;
+            player = new Player();
             sceneDic = new Dictionary<string, BaseScene>();
             sceneDic.Add("FaceStress", new FaceStress());
             sceneDic.Add("RunLeft", new RunLeft());

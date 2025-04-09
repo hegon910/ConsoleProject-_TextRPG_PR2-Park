@@ -9,6 +9,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
     class RunRight : BaseScene
     {
         List<Item> rightRoomItem = new List<Item>();
+        
 
         private bool[,] map;
         private void InitMap(char[,] mapdata)
@@ -24,9 +25,9 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 Console.WriteLine();
 
             }
-            Console.WriteLine("       왼쪽으로 도망쳤다...쫓기고 있다... 무섭다.\n" +
-                        "       I, - : Door\n" +
-                        "       Press 'I' on keyboard to check your heart");
+            Console.WriteLine("왼쪽으로 도망쳤다...쫓기고 있다...\n무섭다.\n" +
+                        "I, - : Door\n" +
+                        "Press 'I' on keyboard to \nCheck your heart");
 
 
             int height = mapdata.GetLength(0);
@@ -120,13 +121,24 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 }
                 Game.player.InventoryChanged = false;
             }
-
+            Game.player.mentalSystem.PrintMentalGauge();
 
         }
 
         public override void Result()
         {
           
+        }
+        public override void Enter()
+        {
+
+            Console.Clear();
+            InitMap(mapdata);
+            Game.player.map = map;
+            Game.player.position = new Vector2(1, 10);
+            Game.player.mentalSystem.Reset();
+            rightRoomItem.Clear();
+            rightRoomItem.Add(new Item("끈기", 'A', new Vector2(30, 1)));
         }
 
         public override void Update()
@@ -137,6 +149,9 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 if (item.position.x == Game.player.position.x &&
                     item.position.y == Game.player.position.y)
                 {
+                    Console.Beep(400, 50);
+                    Console.Beep(400, 50);
+                    Game.player.mentalSystem.RecoverFull();
                     Game.player.inventory.Add(item); // 인벤토리에 추가
                     rightRoomItem.RemoveAt(i);        // 리스트에서 제거
                     i--; // 제거했으니까 인덱스도 하나 줄여줘야 안전
@@ -151,28 +166,19 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
                     Console.SetCursorPosition(0, msgY - 2);
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"\n\n\n       '{item.name}'를 얻었다. 이제는 그것을 마주할 것이다. \n" +
-                        "       나를 쫓아오지 않았다. 나 혼자 두려워했던 것 뿐일까?\n" +
-                        "       Press 'I' on keyboard to Feel Your Heart!");
+                    Console.WriteLine($"\n\n\n       '{item.name}'를 얻었다. 이제는\n 그것을 마주할 것이다. \n" +
+                        "       나를 쫓아오지 않았다. 나 혼자\n포기했던 것 뿐일까?\n" +
+                        "       Press 'I' on keyboard to \nFeel Your Heart!");
                     Console.ResetColor();
 
 
                 }
             }
+            Game.player.mentalSystem.Update();
 
-            }
-        public override void Enter()
-        {
-            
-            Console.Clear();
-            InitMap(mapdata);
-            Game.player.map = map;
-            Game.player.position = new Vector2(1, 10);
 
-            rightRoomItem.Clear();
-            rightRoomItem.Add(new Item("끈기", 'A', new Vector2(30, 1)));
         }
-
+    
         private void TryInteract(ConsoleKey key)
         {
 

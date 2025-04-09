@@ -10,6 +10,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         public List<Item> inventory = new List<Item>(); // 인벤토리
         public bool inventoryVisible = false;
         public bool InventoryChanged { get; set; } = false;
+        public MentalSystem mentalSystem = new MentalSystem();
         public void Print()
         {
             
@@ -58,7 +59,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         public void PrintInventoryWindow()
         {
             int x = 35;
-            int y = 2;
+            int y = 6;
             int maxLines = 10;
 
             for (int i = 0; i < maxLines; i++) //창 지우기
@@ -110,6 +111,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 Console.Write(new string(' ', 22));
             }
         }
+
 
     }
 }
