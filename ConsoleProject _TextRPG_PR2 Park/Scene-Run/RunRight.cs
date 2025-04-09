@@ -25,7 +25,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 Console.WriteLine();
 
             }
-            Console.WriteLine("왼쪽으로 도망쳤다...쫓기고 있다...\n무섭다.\n" +
+            Console.WriteLine("오른쪽으로 도망쳤다...무기력하다...\n실패할 것이다.\n" +
                         "I, - : Door\n" +
                         "Press 'I' on keyboard to \nCheck your heart");
 
