@@ -203,7 +203,15 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("\n\n\n\n\n끈기를 갖고 끝까지 문을 열어보려 노력했다.");
                     Console.ResetColor();
-                    Thread.Sleep(4000);
+                    Console.Beep(200, 700);
+                    Thread.Sleep(300);
+                    Console.Beep(180, 1000);
+                    Thread.Sleep(1000);
+                    Console.Beep(210, 1000);
+                    Thread.Sleep(1000);
+                    Console.Beep(300, 200);
+                    Console.Beep(450, 300);
+                    
                     Game.ChangeScene("FaceStress"); // 또는 다른 문으로 이동
                 }
                 else

@@ -12,6 +12,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
     {
         public override void Input()
         {
+            #region 키입력과 인벤토리(심리상태)에 따른 분기 세분화
             ConsoleKey input = Console.ReadKey(true).Key;
 
             switch (input)
@@ -29,8 +30,21 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     }
                     
                 case ConsoleKey.RightArrow:
-                    Game.ChangeScene("RunRight");
-                    return;
+                    if (Game.player.inventory.Any(item => item.name == "용기") && Game.player.inventory.Any(item => item.name == "끈기"))
+                    {
+                        Game.End();
+                        return;
+                    }
+                    else if (Game.player.inventory.Any(item => item.name == "끈기"))
+                    {
+                        Game.End();
+                        return;
+                    }
+                    else
+                    {
+                        Game.ChangeScene("RunRight");
+                        return;
+                    }
                 case ConsoleKey.DownArrow:
                     Game.ChangeScene("RunDown");
                     return;
@@ -44,11 +58,13 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Console.Beep(300, 100);
                     return;
             }
-            
+            #endregion
+
 
         }
         public void Debug()
         {
+            #region 디버그 화면 코드
             Console.WriteLine("[DEBUG] 오프닝 스킵됨, 디버그할 방향키를 누르세요.");
             ConsoleKey nextKey = Console.ReadKey(true).Key;
             while (Console.KeyAvailable) Console.ReadKey(true);
@@ -70,10 +86,12 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 default:
                     break;
             }
+            #endregion
 
         }
         public override void Render()
         {
+            #region 오프닝 스킵용 디버그 화면
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("────────────────────────────────────────────");
@@ -90,8 +108,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
             {
                 PlayOpening();
             }
-
-            }
+            #endregion 
+        }
 
         public override void Update()
         { }
@@ -254,12 +272,27 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.Beep(270, 500);
             Console.Beep(200, 300);
             Console.Beep(180, 600);
-            if (Game.prevSceneName == "RunLeft")
+            if (Game.player.inventory.Any(item => item.name == "용기") && Game.player.inventory.Any(item => item.name == "끈기"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.Write("                                         용기← ");
+                Console.WriteLine("                                          용기←       끈기→ ");
                 Console.ResetColor();
-                Console.WriteLine("       도망→       도망↓ ");
+                Console.WriteLine("                                                               도망↓");
+            }
+            else if (Game.player.inventory.Any(item => item.name == "끈기"))
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("                                                      끈기→ ");
+                Console.ResetColor();
+                Console.WriteLine("                                          도망←                     도망↓ ");
+            }
+            else if (Game.player.inventory.Any(item => item.name == "용기"))
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("                                         용기← ");
+                Console.ResetColor();
+                Console.WriteLine("                                                     도망→       도망↓ ");
+
             }
             else
             {

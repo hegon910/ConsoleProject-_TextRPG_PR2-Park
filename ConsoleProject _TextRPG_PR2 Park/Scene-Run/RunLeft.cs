@@ -176,9 +176,9 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     
                     Console.SetCursorPosition(0, msgY-2);
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"\n\n\n       '{item.name}'를 얻었다. 이제는 그것을 마주할 것이다. \n" +
-                        "       나를 쫓아오지 않았다. 나 혼자 두려워했던 것 뿐일까?\n" +
-                        "       Press 'I' on keyboard to Feel Your Heart!");
+                    Console.WriteLine($"\n\n\n'{item.name}'를 얻었다. 이제는 그것을 마주할 것이다. \n" +
+                        "나를 쫓아오지 않았다. 나 혼자 두려워했던 것 뿐일까?\n" +
+                        "Press 'I' on keyboard to Feel Your Heart!");
                     Console.ResetColor();
                     
                   
@@ -209,6 +209,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("\n\n\n\n\n용기를 내어 문을 열었다!");
                     Console.ResetColor();
+                    Console.Beep(300, 200);
+                    Console.Beep(450, 300);
                     Game.ChangeScene("FaceStress"); // 또는 다른 문으로 이동
                 }
                 else

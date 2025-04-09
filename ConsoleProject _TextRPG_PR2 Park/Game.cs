@@ -68,11 +68,24 @@ namespace ConsoleProject__TextRPG_PR2_Park
             hasEnded = true;
             Console.Clear();
             gameOver = true;
-            
-                if (Game.player.inventory.Any(item => item.name == "용기"))
-                {
-                    Endings.EndingA();
-                }
+            if (Game.player.inventory.Any(item => item.name == "용기")&& Game.player.inventory.Any(item => item.name == "끈기")&& Game.player.inventory.Any(item => item.name == "마음"))
+            {
+                Endings.TrueEnding();
+            }
+            else if(Game.player.inventory.Any(item => item.name == "용기")&& Game.player.inventory.Any(item => item.name == "끈기") || 
+                Game.player.inventory.Any(item => item.name == "끈기")&& Game.player.inventory.Any(item => item.name == "마음")||
+                Game.player.inventory.Any(item => item.name == "용기")&& Game.player.inventory.Any(item => item.name == "마음"))
+            {
+                Endings.GoodEnding();
+            }
+                else if (Game.player.inventory.Any(item => item.name == "용기"))
+            {
+                Endings.EndingA();
+            }
+            else if (Game.player.inventory.Any(item => item.name == "끈기"))
+            {
+                Endings.EndingB();
+            }
             
         }
         public static void GameOver()

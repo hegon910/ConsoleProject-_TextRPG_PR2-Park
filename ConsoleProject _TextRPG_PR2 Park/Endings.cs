@@ -33,6 +33,20 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.WriteLine("                                                  Ending A :뻔뻔한 용기");
             
         }
+
+        public static void EndingB()
+        {
+            Console.WriteLine("엔딩B");
+        }
         
+        public static void TrueEnding()
+        {
+            Console.WriteLine("진엔딩");
+        }
+
+        public static void GoodEnding()
+        {
+            Console.WriteLine("굿엔딩");
+        }
     }
 }
