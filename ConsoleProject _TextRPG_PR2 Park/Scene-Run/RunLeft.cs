@@ -25,9 +25,9 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 Console.WriteLine();
 
             }
-            Console.WriteLine("       왼쪽으로 도망쳤다...쫓기고 있다... 무섭다.\n" +
-                        "       I, - : Door\n" +
-                        "       Press 'I' on keyboard to check your heart");
+            Console.WriteLine("왼쪽으로 도망쳤다...\n쫓기고 있다... 무섭다.\n" +
+                        "I, - : Door\n" +
+                        "Press 'I' on keyboard to \ncheck your heart");
 
 
             int height = mapdata.GetLength(0);

@@ -56,7 +56,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Console.Beep(300, 100);
                     Console.Beep(300, 100);
                     Console.Beep(300, 100);
-                    return;
+                    break;
             }
             #endregion
 
@@ -173,18 +173,18 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n" +
-                "                                                    □□□□□□□□□□□□□\r\n" +
-                "                                                    □■■□□□□□□□■■□\r\n" +
-                "                                                    □■■□□□□□□□■■□\r\n" +
-                "                                                    □■■□□□□□□□■■□\r\n" +
-                "                                                    □■■□□□■■■■■■□\r\n" +
-                "                                                    □■■□□□□□□□■■□\r\n" +
-                "                                                    □■■□□□□□□□■■□\r\n" +
-                "                                                    □■■□□□□□□□■■□\r\n" +
-                "                                                    □■■■■■■■□□■■□\r\n" +
-                "                                                    □□□□□□□□□□■■□\r\n" +
-                "                                                    □□□□□□□□□□■■□\r\n" +
-                "                                                    □□□□□□□□□□■■□");
+                "□□□□□□□□□□□□□\r\n" +
+                "□■■□□□□□□□■■□\r\n" +
+                "□■■□□□□□□□■■□\r\n" +
+                "□■■□□□□□□□■■□\r\n" +
+                "□■■□□□■■■■■■□\r\n" +
+                "□■■□□□□□□□■■□\r\n" +
+                "□■■□□□□□□□■■□\r\n" +
+                "□■■□□□□□□□■■□\r\n" +
+                "□■■■■■■■□□■■□\r\n" +
+                "□□□□□□□□□□■■□\r\n" +
+                "□□□□□□□□□□■■□\r\n" +
+                "□□□□□□□□□□■■□");
             Thread.Sleep(100);
             Console.ResetColor();
             Console.Beep(300, 700);
@@ -226,19 +226,19 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.Beep(1500, 50);
             Console.Beep(1500, 50);
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine(@"                                                    □□□□□□□□□□□□□□
-                                                    □■■■■■■■□□■■□□
-                                                    □□□□■■□□□□■■□□
-                                                    □□□□■■□□□□■■□□
-                                                    □□□□■■□■■■■■□□
-                                                    □□□■■■■□□□■■□□
-                                                    □■■■□□■■□□■■□□
-                                                    □■■□□□□■□□■■□□
-                                                    □□□■■■■■■■■■□□
-                                                    □□□□□□□□□□■■□□
-                                                    □□□□□□□□□□■■□□
-                                                    □□□□□□□□□□■■□□
-                                                    □□□□□□□□□□■■□□");
+            Console.WriteLine(@"□□□□□□□□□□□□□□
+□■■■■■■■□□■■□□
+□□□□■■□□□□■■□□
+□□□□■■□□□□■■□□
+□□□□■■□■■■■■□□
+□□□■■■■□□□■■□□
+□■■■□□■■□□■■□□
+□■■□□□□■□□■■□□
+□□□■■■■■■■■■□□
+□□□□□□□□□□■■□□
+□□□□□□□□□□■■□□
+□□□□□□□□□□■■□□
+□□□□□□□□□□■■□□");
             Console.ResetColor();
 
 
@@ -252,17 +252,17 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.Beep(300, 350); // 살짝 올라가며 위협감
             Thread.Sleep(600);
 
-            Console.WriteLine("                                                      도망쳐");
+            Console.WriteLine("도망쳐");
             Console.Beep(180, 700); // 가장 낮고 끈적한 울림         
             Thread.Sleep(1500);
-            Console.WriteLine("                                                          도망쳐?");
+            Console.WriteLine("    도망쳐?");
             Console.Beep(190, 1500); // 가장 낮고 끈적한 울림         
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
 
-            Console.WriteLine("                                                            도망쳐!");
+            Console.WriteLine("         도망쳐!");
             Console.WriteLine("                               ");
 
             Console.Beep(270, 100);
@@ -275,28 +275,28 @@ namespace ConsoleProject__TextRPG_PR2_Park
             if (Game.player.inventory.Any(item => item.name == "용기") && Game.player.inventory.Any(item => item.name == "끈기"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("                                          용기←       끈기→ ");
+                Console.WriteLine("용기←        끈기→ ");
                 Console.ResetColor();
-                Console.WriteLine("                                                               도망↓");
+                Console.WriteLine("                        도망↓");
             }
             else if (Game.player.inventory.Any(item => item.name == "끈기"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("                                                      끈기→ ");
+                Console.WriteLine("            끈기→ ");
                 Console.ResetColor();
-                Console.WriteLine("                                          도망←                     도망↓ ");
+                Console.WriteLine("도망←                    도망↓ ");
             }
             else if (Game.player.inventory.Any(item => item.name == "용기"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("                                         용기← ");
+                Console.WriteLine("용기← ");
                 Console.ResetColor();
-                Console.WriteLine("                                                     도망→       도망↓ ");
+                Console.WriteLine("            도망→        도망↓ ");
 
             }
             else
             {
-                Console.WriteLine("                                         도망←     도망→       도망↓ ");
+                Console.WriteLine("도망←        도망→        도망↓ ");
             }
 
             Thread.Sleep(1000);
