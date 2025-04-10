@@ -315,7 +315,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
 
-            Console.WriteLine("         Text RPG");
+            Console.WriteLine("         Assignment");
             Console.WriteLine("                               ");
 
             Console.Beep(270, 100);
