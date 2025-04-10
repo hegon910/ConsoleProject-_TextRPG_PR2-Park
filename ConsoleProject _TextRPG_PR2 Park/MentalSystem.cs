@@ -16,7 +16,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         private bool isLocked = false;
 
         public bool IsBroken => mental <= 0;
-        public MentalSystem(int maxMental = 100, double intervalSecond = 0.1)
+        public MentalSystem(int maxMental = 100, double intervalSecond = 0.3)
         {
             this.maxMental = maxMental;
             this.mental = maxMental;

@@ -14,39 +14,144 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Thread.Sleep(500);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine
-               ("                                              너무나도 두려웠다.");
+               ("엔딩 - 용기 -");
             Console.WriteLine();
             Thread.Sleep(2000);
-            Console.WriteLine("                                            나를 욕하는 손가락들과" +
-                "\n                                                      '이래야만 한다'는 스스로의 억압..\n");
+            Console.WriteLine("나를 향하는 손가락들" +
+                "\n'이래야만 한다'는 스스로의 억압\n");
             Thread.Sleep(3500);
-            Console.WriteLine("                           사람들은 자신이 손가락질 받기 두려워, 남에게 손가락질 하는 것이다.\n");
+            Console.WriteLine("사람들은 자신이 손가락질 받기 두려워, 남에게 손가락질 하는 것이다.\n");
             Console.WriteLine();
             Thread.Sleep(2500);
             Console.WriteLine
-               ("\n\n                                             이겨내기 위해서는 조금의 용기면 되었다.");
+               ("\n\n이겨내기 위해 조금의 용기를 가지고");
             Console.WriteLine();
             Thread.Sleep(4500);
-            Console.WriteLine("                        그 손가락들은 결코, 내가 용기를 가질 때까지 도망가도 나를 쫓아오지 못했다.");
+            Console.WriteLine("고개를 들었을 때, 나를 향하는 손가락 같은 건 애초부터 없었다.");
 
             Console.WriteLine();
             Thread.Sleep(1500);
-            Console.WriteLine("                                                  Ending A :뻔뻔한 용기");
-            
+            Console.WriteLine("스스로 숨을 필요는 없었다.");
+
+            Console.WriteLine("\n\nR to Restart? or you can choose 'Escape' for this.");
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+                    if (key == ConsoleKey.R)
+                    {
+                        Game.Start();
+                        Game.Run();
+                        break;
+                    }
+                    else if (key == ConsoleKey.Escape)
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+            }
         }
 
         public static void EndingB()
         {
-            Console.WriteLine("엔딩B");
+            Console.Clear();
+            Thread.Sleep(100);
+            Console.WriteLine("엔딩 - B 끈기");
+            Thread.Sleep(1000);
+            Console.WriteLine("'어차피, 안 될 것이다.'");
+            Thread.Sleep(3000);
+            Console.WriteLine("'갈 길이 너무 멀다.'");
+            Thread.Sleep(3000);
+            Console.WriteLine("그렇게 포기해 왔던 길들을 만약에 지금까지 걷고 있었더라면...");
+            Thread.Sleep(4000);
+            Console.WriteLine("조금 멀리 돌아도 괜찮다.");
+            Thread.Sleep(2000);
+            Console.WriteLine("편법이면 어떻고, 스스로가 부끄러울 때가 있더라도 어떤가.");
+            Thread.Sleep(3000);
+            Console.WriteLine("멈춰 설 필요는 없다. 오늘도 조금이라도 한 걸음이라도 이 길 위에서");
+            Thread.Sleep(3000);
+            Console.WriteLine("발을 내딛기만 한다면, 언젠가는 도착할 것이다.");
+            Thread.Sleep(2000);
+            Console.WriteLine("\n\nR to Restart? or you can choose 'Escape' for this.");
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+                    if (key == ConsoleKey.R)
+                    {
+                        Game.Start();
+                        Game.Run();
+                        break;
+                    }
+                    else if (key == ConsoleKey.Escape)
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+            }
         }
         public static void EndingC()
         {
-            Console.WriteLine("엔딩C");
+            Console.Clear();
+            Thread.Sleep(100);
+            Console.WriteLine("엔딩 - C 통찰");
+            Thread.Sleep(1000);
+            Console.WriteLine("'아는 것은 모르는 것을 제외한 것'");
+            Thread.Sleep(3000);
+            Console.WriteLine("'모르는 것은 앞으로 알아갈 수 있는 것'");
+            Thread.Sleep(3000);
+            Console.WriteLine("지금 모르는 것을 알아갈 즐거움에 더 신경 쓰자.");
+            Thread.Sleep(4000);
+            Console.WriteLine("남들만큼 알지 못한다고 부끄러워하는 것은, 자신이 아는 것을 부정하는 일이다.");
+            Thread.Sleep(2000);
+            Console.WriteLine("나만이 아는 것을 이해하고, 모르는 것을 배우는 걸 즐거워 하자");
+            Thread.Sleep(3000);
+            Console.WriteLine("가장 무서운 것은 흥미를 잃는 것이요, 무관심에 귀를 닫는 것이다.");
+            Thread.Sleep(4000);
+            Console.WriteLine("언젠가는 이해할 것이니, 흩어진 조각을 하나 씩 놓아보자.");
+            Thread.Sleep(5000);
+            Console.WriteLine("\n\nR to Restart? or you can choose 'Escape' for this.");
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+                    if (key == ConsoleKey.R)
+                    {
+                        Game.Start();
+                        Game.Run();
+                        break;
+                    }
+                    else if (key == ConsoleKey.Escape)
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+            }
         }
 
         
         public static void TrueEnding()
         {
+            Console.Clear();
+            Thread.Sleep(100);
+            Console.WriteLine("세상은 내가 누비는 무대이며");
+            Thread.Sleep(3000);
+            Console.WriteLine("내가 쓰는 각본에 따라 내용이 바뀌고");
+            Thread.Sleep(4000);
+            Console.WriteLine("나의 받아드림에 따라 장르가 바뀌며");
+            Thread.Sleep(4000);
+            Console.WriteLine("나의 감정에 따라 음악이 깔린다.");
+            Thread.Sleep(5000);
+            Console.WriteLine("\n\n                           그리고 이 무대의 가장 중요한 관객도 내 마음 속의 나 자신 뿐이다.");
+            Thread.Sleep(3000);
+            Console.WriteLine("\n                                      커튼을 열고 오늘도 무대로 향하자.");
+            Thread.Sleep(7000);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("□□□□□□□□□□□□□□□□□■□■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□\r" +
                 "\n□■□□□□□■□□□□□□□□□■□■□□□□□□□□□□□□□□■■□□□■■□□□□■■□□■■■■■■□□■■■■■■□□■□□□□□□□■■■■■■□□□■■□\r" +     
                 "\n□■□□□□□■□□□□□□□□□■□■□□□□□□□□□□□□□□■■□□□■■■□□□■□□■■■□□■■■□■□□□■■□□■□□□□□□□■□□□■■■□□■■□\r" +     
@@ -59,11 +164,61 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 "\n□■□□□□□■□■■■■■■□□■□■□□■■■■■■□■■□□□□□■■■□□□■■□□□□□■■■■■■□□■□□□□■□□■■■■■■□□■■■■■■□□□■■□\r" +     
                 "\n□□□□□□□□□□□□□□□□□□□□□□□□□□□□□■■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□\r" +     
                 "\n□□□□□□□□□□□□□□□□□□□□□□□□□□□□□■■□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+            Console.ResetColor();
+            Thread.Sleep(6000);
+            Console.WriteLine("Thank You For Playing\n press Enter or Esc to Exit");
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+                    if (key == ConsoleKey.Escape || key == ConsoleKey.Enter)
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+            }
+
         }
 
         public static void GoodEnding()
         {
-            Console.WriteLine("굿엔딩");
+            Console.Clear();
+            Thread.Sleep(1000);
+            Console.WriteLine("오늘도 하루가 다르지 않다.");
+            Thread.Sleep(3000);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("나는 같은 하루지만 이 기분은 뭘까.");
+            Thread.Sleep(3000);
+            Console.WriteLine("한결 편해진 마음.");
+            Console.ResetColor();
+            Thread.Sleep(3000);
+            Console.WriteLine("\n 설령 거센 바람이 분다해도, 이제는 그것마저 즐거움이 된다. ");
+            Thread.Sleep(3000);
+            Console.WriteLine("\n 내게 필요한 것은 그다지 많지 않았다. ");
+            Thread.Sleep(3000);
+            Console.WriteLine("\n 댓가가 노력보다 적을까 두려워, 달려나갈 수 없던 그날들은 지났다. ");
+            Thread.Sleep(4000);
+            Console.WriteLine("\n 나는 오늘도 즐겁다. ");
+            Thread.Sleep(5000);
+            Console.WriteLine("\n\nR to Restart? or you can choose 'Escape' for this.");
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+                    if (key == ConsoleKey.R)
+                    {
+                        Game.Start();
+                        Game.Run();
+                        break;
+                    }
+                    else if (key == ConsoleKey.Escape)
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+            }
         }
 
         public static void GameOver()
@@ -141,7 +296,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
             }
             gameOver = true;
 
-            Console.WriteLine("\n\nR to Restart? or you can chose 'Escape' for this.");
+            Console.WriteLine("\n\nR to Restart? or you can choose 'Escape' for this.");
 
             while (true)
             {
@@ -245,7 +400,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.ResetColor();
             gameOver = true;
 
-            Console.WriteLine("\n\nR to Restart? or you can chose 'Escape' for this.");
+            Console.WriteLine("\n\nR to Restart? or you can choose 'Escape' for this.");
 
             while (true)
             {
