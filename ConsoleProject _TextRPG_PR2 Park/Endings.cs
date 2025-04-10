@@ -170,7 +170,23 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.WriteLine("난 움직이는 것도 할 수 없었다.");
             Thread.Sleep(5000);
             Console.WriteLine("아.");
-            Thread.Sleep(3000);
+            Console.Beep(180, 1000);
+            Thread.Sleep(500);
+            Console.SetCursorPosition(0, 1);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("아.");
+            Console.ResetColor();
+            Console.Beep(200, 1000);
+            Thread.Sleep(2000);
+            string failed = "실패했다.실패했다.실패했다.실패했다.실패했다.실패했다.실패했다.실패했다.실패했다.실패했다.실패했다.실패했다.실패했다.";
+            Console.Clear();
+            for(int i = 0; i <= 30; i++)
+            {
+                Console.Beep(700, 50);
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine(failed);
+                Console.ResetColor();
+            }
             Console.Clear();
             Console.OutputEncoding = Encoding.UTF8;
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -224,8 +240,30 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.Beep(470, 100);
             Console.Beep(570, 100);
             Console.Beep(570, 1000);
+
+            Console.WriteLine("G A M E O V E R");
             Console.ResetColor();
-          
+            gameOver = true;
+
+            Console.WriteLine("\n\nR to Restart? or you can chose 'Escape' for this.");
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+                    if (key == ConsoleKey.R)
+                    {
+                        Game.Start();
+                        Game.Run();
+                        break;
+                    }
+                    else if (key == ConsoleKey.Escape)
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+            }
 
         }
     }
