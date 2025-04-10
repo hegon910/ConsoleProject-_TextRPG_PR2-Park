@@ -16,11 +16,23 @@ namespace ConsoleProject__TextRPG_PR2_Park
         {
             #region 키입력과 인벤토리(심리상태)에 따른 분기 세분화
             ConsoleKey input = Console.ReadKey(true).Key;
-
+            bool hasCourage = Game.player.inventory.Any(i => i.name == "용기");
+            bool hasPatience = Game.player.inventory.Any(i => i.name == "끈기");
+            bool hasInsight = Game.player.inventory.Any(i => i.name == "통찰");
             switch (input)
             {
                 case ConsoleKey.LeftArrow:
-                    if (Game.player.inventory.Any(item => item.name == "용기"))
+                    if (hasCourage&&hasPatience&&hasInsight)
+                    {
+                        Game.End();
+                        return;
+                    }
+                    else if (hasCourage&&hasPatience || hasInsight && hasCourage)
+                    {
+                        Game.End();
+                        return;
+                    }
+                    else if (hasCourage)
                     {
                         Game.End();
                         return;
@@ -30,14 +42,19 @@ namespace ConsoleProject__TextRPG_PR2_Park
                         Game.ChangeScene("RunLeft");
                         return;
                     }
-                    
+
                 case ConsoleKey.RightArrow:
-                    if (Game.player.inventory.Any(item => item.name == "용기") && Game.player.inventory.Any(item => item.name == "끈기"))
+                    if (hasCourage&&hasInsight&&hasPatience)
                     {
                         Game.End();
                         return;
                     }
-                    else if (Game.player.inventory.Any(item => item.name == "끈기"))
+                    else if(hasPatience&&hasInsight||hasPatience&&hasCourage)
+                    {
+                        Game.End();
+                            return;
+                    }
+                    else if (hasPatience)
                     {
                         Game.End();
                         return;
@@ -48,8 +65,26 @@ namespace ConsoleProject__TextRPG_PR2_Park
                         return;
                     }
                 case ConsoleKey.DownArrow:
-                    Game.ChangeScene("RunDown");
-                    return;
+                    if(hasInsight&&hasCourage&&hasPatience)
+                    {
+                        Game.End();
+                            return;
+                    }
+                    else if (hasInsight&&hasCourage||hasPatience&&hasInsight)
+                    {
+                        Game.End();
+                        return;
+                    }
+                    else if(hasInsight)
+                    {
+                        Game.End();
+                        return;
+                    }
+                    else
+                    {
+                        Game.ChangeScene("RunDown");
+                        return;
+                    }
                 case ConsoleKey.UpArrow:
                     Endings.GameOver();
                     return;
@@ -125,14 +160,12 @@ namespace ConsoleProject__TextRPG_PR2_Park
         { }
 
 
-        public override void Result()
-        { }
         public override void Enter()
         {
 
 
             PlayOpening();
-            
+        
 
         }
 
@@ -140,8 +173,10 @@ namespace ConsoleProject__TextRPG_PR2_Park
         {
             #region 오프닝 시퀀스
             Console.Clear();
+            bool skipped = false;
             string noise = "나렇생는.이살인쁘은나않냥지게늘오람쁘는이도그사다다나간나그지않.아은고";
             string doubt = "하에말?자위네그지끼끄선있고럽지까마새제주럴냐.자랄하부,.위변정명도않지선";
+
             for (int i = 0; i < 50; i++)
             {
                 Console.Write(noise); Console.Write(noise); Console.Write(noise); Console.Write(noise); Console.Write(noise);
@@ -250,9 +285,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
 □□□□□□□□□□■■□□
 □□□□□□□□□□■■□□
 □□□□□□□□□□■■□□");
+
             Console.ResetColor();
-
-
 
             Console.Beep(250, 500); // 낮고 길게
             Thread.Sleep(700);
@@ -263,17 +297,17 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.Beep(300, 350); // 살짝 올라가며 위협감
             Thread.Sleep(600);
 
-            Console.WriteLine("도망쳐");
+            Console.WriteLine("KI Academy");
             Console.Beep(180, 700); // 가장 낮고 끈적한 울림         
             Thread.Sleep(1500);
-            Console.WriteLine("    도망쳐?");
+            Console.WriteLine("    Console proect II");
             Console.Beep(190, 1500); // 가장 낮고 끈적한 울림         
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
             Console.Beep(250, 100); // 가장 낮고 끈적한 울림         
 
-            Console.WriteLine("         도망쳐!");
+            Console.WriteLine("         Text RPG");
             Console.WriteLine("                               ");
 
             Console.Beep(270, 100);
@@ -309,7 +343,10 @@ namespace ConsoleProject__TextRPG_PR2_Park
             {
                 Console.WriteLine("도망←  도망→  도망↓ ");
             }
-
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(true); // 버퍼에 남은 키 날려버림
+            }
             Thread.Sleep(1000);
 
             int count = 0;
@@ -317,15 +354,19 @@ namespace ConsoleProject__TextRPG_PR2_Park
             while (isRunning)
             {
                 if (count % 3 == 0) // TODO : 브금이 3번 루프하고나서야 키입력이 가능해짐 일단 보류
+                
+                    Console.Beep(270, 500);
+                    if (Console.KeyAvailable) { Input(); break; }
 
-                Console.Beep(270, 500);
-                Console.Beep(200, 300);  // 가끔 변칙음
+                    Console.Beep(200, 300);
+                    if (Console.KeyAvailable) { Input(); break; }
 
-                Console.Beep(180, 600);
-                Thread.Sleep(1000);
+                    Console.Beep(180, 600);
+                    if (Console.KeyAvailable) { Input(); break; }
 
-                count++;
-
+                    Thread.Sleep(1000);
+                    count++;
+                
 
                 if (Console.KeyAvailable)
                 {

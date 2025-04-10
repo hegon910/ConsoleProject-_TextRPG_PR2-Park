@@ -104,7 +104,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         }
         public override void Enter()
         {
-            #region 아이템 습득
+            #region 아이템 세팅
             Console.Clear();
             InitMap(mapdata);
             Game.player.map = map;

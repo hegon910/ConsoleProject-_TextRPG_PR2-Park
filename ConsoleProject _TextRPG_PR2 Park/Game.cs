@@ -14,7 +14,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         private static BaseScene curScene;
         public static string prevSceneName;
         public static Player player = new Player();
-        
+
 
         private static bool gameOver;
         private static bool hasEnded = false;
@@ -25,12 +25,12 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 curScene.Render();
                 curScene.Input();
                 curScene.Update();
-                curScene.Result();
             }
         }
 
         public static void Start()
         {
+            #region 씬 준비
             gameOver = false;
             hasEnded = false;
             Console.CursorVisible = false;
@@ -41,13 +41,13 @@ namespace ConsoleProject__TextRPG_PR2_Park
             sceneDic.Add("RunRight", new RunRight());
             sceneDic.Add("RunDown", new RunDown());
             curScene = sceneDic["FaceStress"];
-
+            #endregion
 
         }
 
         public static void ChangeScene(string sceneName)
         {
-            
+            #region 씬 전환
 
             Console.WriteLine("현재씬 :" + curScene);
 
@@ -58,23 +58,26 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 curScene = sceneDic[sceneName];
                 curScene.Enter();
             }
-
+            #endregion
         }
 
 
         public static void End()
         {
+            int feelCount = 0;
+            if (Game.player.inventory.Any(i => i.name == "용기")) feelCount++;
+            if (Game.player.inventory.Any(i => i.name == "끈기")) feelCount++;
+            if (Game.player.inventory.Any(i => i.name == "통찰")) feelCount++;
+            #region 게임 엔딩들
             if (hasEnded) return;
             hasEnded = true;
             Console.Clear();
             gameOver = true;
-            if (Game.player.inventory.Any(item => item.name == "용기")&& Game.player.inventory.Any(item => item.name == "끈기")&& Game.player.inventory.Any(item => item.name == "통찰"))
+            if (feelCount ==3)
             {
                 Endings.TrueEnding();
             }
-            else if(Game.player.inventory.Any(item => item.name == "용기")&& Game.player.inventory.Any(item => item.name == "끈기") || 
-                Game.player.inventory.Any(item => item.name == "끈기")&& Game.player.inventory.Any(item => item.name == "통찰")||
-                Game.player.inventory.Any(item => item.name == "용기")&& Game.player.inventory.Any(item => item.name == "통찰"))
+            else if(feelCount ==2)
             {
                 Endings.GoodEnding();
             }
@@ -86,11 +89,15 @@ namespace ConsoleProject__TextRPG_PR2_Park
             {
                 Endings.EndingB();
             }
+            else if (Game.player.inventory.Any(item => item.name == "통찰"))
+            {
+                Endings.EndingC();
+            }
             else
             {
                 Endings.GameOver();
             }
-            
+            #endregion
         }
 
 

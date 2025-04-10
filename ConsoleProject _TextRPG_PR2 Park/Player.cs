@@ -59,8 +59,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
         public void PrintInventoryWindow()
         {
             int x = 35;
-            int y = 6;
-            int maxLines = 10;
+            int y = 5;
+            int maxLines = 20;
 
             for (int i = 0; i < maxLines; i++) //창 지우기
             {
@@ -103,12 +103,12 @@ namespace ConsoleProject__TextRPG_PR2_Park
         {
             int x = 35;
             int y = 2;
-            int maxLines = 10;
+            int maxLines = 20;
 
             for (int i = 0; i < maxLines; i++)
             {
                 Console.SetCursorPosition(x, y + i);
-                Console.Write(new string(' ', 22));
+                Console.Write(new string(' ', 40));
             }
         }
 

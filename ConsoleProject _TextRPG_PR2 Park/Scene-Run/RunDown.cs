@@ -191,6 +191,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
             InitMap(mapdata);
             Game.player.map = map;
             Game.player.position = new Vector2(1, 2);
+
             Game.player.mentalSystem.Reset();
             Game.player.mentalSystem.Unlock();
             #endregion
