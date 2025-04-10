@@ -86,8 +86,16 @@ namespace ConsoleProject__TextRPG_PR2_Park
                         return;
                     }
                 case ConsoleKey.UpArrow:
-                    Endings.GameOver();
-                    return;
+                    if (hasCourage && hasInsight && hasPatience)
+                    {
+                        Game.End();
+                        return;
+                    }
+                    else
+                    {
+                        Endings.GameOver();
+                        return;
+                    }
                 default:
                     Console.SetCursorPosition(0, 19);
                     Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -317,35 +325,69 @@ namespace ConsoleProject__TextRPG_PR2_Park
             Console.Beep(270, 500);
             Console.Beep(200, 300);
             Console.Beep(180, 600);
-            if (Game.player.inventory.Any(item => item.name == "용기") && Game.player.inventory.Any(item => item.name == "끈기"))
+            #region 선택문 출력
+            if (Game.player.inventory.Any(item => item.name == "용기") && Game.player.inventory.Any(item => item.name == "끈기")&& Game.player.inventory.Any(item => item.name == "통찰"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("용기←  끈기→ ");
+                Console.Write("도전↑←↓→");
                 Console.ResetColor();
-                Console.WriteLine("             도망↓");
+            }
+            else if (Game.player.inventory.Any(item => item.name == "용기") && Game.player.inventory.Any(item => item.name == "끈기"))
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("용기←  끈기→ ");
+                Console.ResetColor();
+                Console.WriteLine("  도망↓");
+            }
+            else if (Game.player.inventory.Any(item => item.name == "용기")&& Game.player.inventory.Any(item => item.name == "통찰"))
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("용기←");
+                Console.ResetColor();
+                Console.Write("   도망→");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("  통찰↓");
+                Console.ResetColor();
+            }
+            else if (Game.player.inventory.Any(item => item.name == "끈기")&& Game.player.inventory.Any(item => item.name == "통찰"))
+            {
+                Console.Write("도망←");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.Write("   끈기→   통찰↓");
+                Console.ResetColor();
+        
             }
             else if (Game.player.inventory.Any(item => item.name == "끈기"))
             {
+                Console.Write("도망←");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("      끈기→ ");
+                Console.Write("   끈기→ ");
                 Console.ResetColor();
-                Console.WriteLine("도망←         도망↓ ");
+                Console.WriteLine("   도망↓");
             }
             else if (Game.player.inventory.Any(item => item.name == "용기"))
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("용기← ");
+                Console.Write("용기← ");
                 Console.ResetColor();
-                Console.WriteLine("      도망→   도망↓ ");
+                Console.WriteLine("   도망→   도망↓ ");
 
+            }
+            else if (Game.player.inventory.Any(item => item.name == "통찰"))
+            {
+                Console.Write("도망←   도망→");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("   통찰↓");
+                Console.ResetColor();
             }
             else
             {
                 Console.WriteLine("도망←  도망→  도망↓ ");
             }
+            #endregion
             while (Console.KeyAvailable)
             {
-                Console.ReadKey(true); // 버퍼에 남은 키 날려버림
+                Console.ReadKey(true); // 버퍼에 남은 키 날리기
             }
             Thread.Sleep(1000);
 

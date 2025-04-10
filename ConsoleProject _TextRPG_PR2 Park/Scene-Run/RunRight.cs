@@ -126,6 +126,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
         public override void Enter()
         {
+            Console.Beep(1500, 50);
+            Console.Beep(1500, 50);
             #region 아이템 습득
             Console.Clear();
             InitMap(mapdata);
