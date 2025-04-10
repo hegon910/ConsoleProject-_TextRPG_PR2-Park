@@ -65,7 +65,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
             for (int i = 0; i < maxLines; i++) //창 지우기
             {
                 Console.SetCursorPosition(x, y + i);
-                Console.Write(new string(' ', 25));
+                Console.Write(new string(' ', 0));
             }
 
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -108,7 +108,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
             for (int i = 0; i < maxLines; i++)
             {
                 Console.SetCursorPosition(x, y + i);
-                Console.Write(new string(' ', 40));
+                Console.Write(new string(' ', 25));
             }
         }
 

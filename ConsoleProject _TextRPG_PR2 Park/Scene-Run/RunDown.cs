@@ -28,8 +28,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
                 {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
                 {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
-                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','|','#',' ',' ','#'},
+                {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','|','#',' ',' ','#'},
                 {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
                 {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
                 {'#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#','#',' ',' ','#'},
@@ -58,7 +58,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
 
             }
             Console.WriteLine("아래로 도망쳤다..문제를 풀 수 없다\n무능한 내가 싫다.\n" +
-                        "I, - : Door\n" +
+                        "Move to '1,2,3,4' to Warp Room\nPress  '①','②' , '③', '④', '⑤' to Get Feel" +
                         "Press 'I' on keyboard to \nCheck your heart");
 
 
@@ -173,9 +173,9 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     }
                     Console.SetCursorPosition(0, msgY - 2);
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"\n\n\n'{item.name}'를 얻었다. 이제는\n 방법을 알 것 같다. \n" +
-                        "어려워 보였지만\n정답은 언제나 존재한다\n" +
-                        " Press 'I' on keyboard to \nFeel Your Heart!");
+                    Console.WriteLine($"\n\n\n'{item.name}'를 얻었다. 이제는\n 방법을 알 것 같다.                                  \n" +
+                        "어려워 보였지만                                                         \n정답은 언제나 존재한다     \n" +
+                        " Press 'I' on keyboard to \nFeel Your Heart!                                                       ");
                     Console.ResetColor();
                     
                        
@@ -222,7 +222,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 DoorInteract();
             }
 
-            if (tile == '━')
+            if (tile == '━'||tile=='|')
             {
                 #region 루팅시 방 해금
                 if (Game.player.inventory.Any(item => item.name == "통찰"))
