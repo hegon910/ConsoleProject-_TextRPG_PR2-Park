@@ -37,7 +37,9 @@ namespace ConsoleProject__TextRPG_PR2_Park
             }
             if(mental == 0)
             {
-                Endings.GameOver();
+                Game.MentalOut();
+                Game.End();
+               
             }
         }
 

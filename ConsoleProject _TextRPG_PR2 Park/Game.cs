@@ -14,6 +14,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         private static BaseScene curScene;
         public static string prevSceneName;
         public static Player player = new Player();
+        private static bool mentalOut = false;
 
 
         private static bool gameOver;
@@ -93,11 +94,19 @@ namespace ConsoleProject__TextRPG_PR2_Park
             {
                 Endings.EndingC();
             }
+            else if(mentalOut)
+            {
+                Endings.GameOverParamOut();
+            }
             else
             {
                 Endings.GameOver();
             }
             #endregion
+        }
+         public static void MentalOut()
+        {
+            mentalOut = true;
         }
 
 

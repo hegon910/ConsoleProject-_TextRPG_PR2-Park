@@ -57,7 +57,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 Console.WriteLine();
 
             }
-            Console.WriteLine("왼쪽으로 도망쳤다...쫓기고 있다...\n무섭다.\n" +
+            Console.WriteLine("아래로 도망쳤다..문제를 풀 수 없다\n무능한 내가 싫다.\n" +
                         "I, - : Door\n" +
                         "Press 'I' on keyboard to \nCheck your heart");
 
@@ -156,8 +156,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
                 if (item.position.x == Game.player.position.x &&
                     item.position.y == Game.player.position.y)
                 {
-                    Console.Beep(400, 50);
-                    Console.Beep(400, 50);
+                    Console.Beep(523, 50);
+                    Console.Beep(1046, 120);
                     Game.player.mentalSystem.RecoverFull();
                     Game.player.inventory.Add(item); // 인벤토리에 추가
                     downRoomItem.RemoveAt(i);        // 리스트에서 제거
@@ -169,15 +169,19 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     {
                         Console.SetCursorPosition(0, msgY + j);
                         Console.Write(new string(' ', Console.WindowWidth));
-                    }
 
+                    }
                     Console.SetCursorPosition(0, msgY - 2);
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"\n\n\n       '{item.name}'를 얻었다. 이제는\n 그것을 마주할 것이다. \n" +
-                        "       나를 쫓아오지 않았다. 나 혼자\n포기했던 것 뿐일까?\n" +
-                        "       Press 'I' on keyboard to \nFeel Your Heart!");
+                    Console.WriteLine($"\n\n\n'{item.name}'를 얻었다. 이제는\n 방법을 알 것 같다. \n" +
+                        "어려워 보였지만\n정답은 언제나 존재한다\n" +
+                        " Press 'I' on keyboard to \nFeel Your Heart!");
                     Console.ResetColor();
+                    
+                       
+                   
                 }
+        
                 #endregion
 
             }
@@ -188,7 +192,7 @@ namespace ConsoleProject__TextRPG_PR2_Park
         {
             Console.Beep(1500, 50);
             Console.Beep(1500, 50);
-            #region 아이템 획득
+            #region 플레이어 셋
             Console.Clear();
             InitMap(mapdata);
             Game.player.map = map;
@@ -229,8 +233,6 @@ namespace ConsoleProject__TextRPG_PR2_Park
                     Console.ResetColor();
                     Console.Beep(200, 700);
                     Thread.Sleep(300);
-                    Console.Beep(180, 1000);
-                    Thread.Sleep(1000);
                     Console.Beep(210, 1000);
                     Thread.Sleep(1000);
                     Console.Beep(300, 200);
@@ -272,24 +274,29 @@ namespace ConsoleProject__TextRPG_PR2_Park
             switch (tile)
             {
                 case '1':
-                    
+                    Console.Beep(450, 50);
+                    Console.Beep(500, 30);
                     Game.player.position = new Vector2(2, 1);
                     break;
                 case '2':
-                    
+                    Console.Beep(450, 50);
+                    Console.Beep(500, 30);
                     Game.player.position = new Vector2(10, 1);
                     break;
                 case '3':
-                    
+                    Console.Beep(450, 50);
+                    Console.Beep(500, 30);
                     Game.player.position = new Vector2(14, 1);
                     break;
                 case '4':
-                    
+                    Console.Beep(450, 50);
+                    Console.Beep(500, 30);
                     Game.player.position = new Vector2(6, 1);
                     break;
                 case '5':
-                    
-                    
+
+                    Console.Beep(450, 50);
+                    Console.Beep(500, 30);
                     Game.player.position = new Vector2(17, 1);
                     break;
             }
@@ -314,6 +321,8 @@ namespace ConsoleProject__TextRPG_PR2_Park
                             {
                                 if (mapdata[y, x] == tile)
                                 {
+                                    Console.Beep(650, 50);
+                                    Console.Beep(700, 30);
                                     Console.SetCursorPosition(x, y);
                                     Console.ForegroundColor = ConsoleColor.Green;
                                     Console.Write(tile);
